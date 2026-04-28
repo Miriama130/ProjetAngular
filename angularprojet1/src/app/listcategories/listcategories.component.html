@@ -1,0 +1,18 @@
+
+<!-----interpolation ---->{{message}}
+<!---- event binding ----> <button (click)="f('test')">test</button>
+<!----property binding ----> <input [value]="message">
+<div class="container">
+    <div class="row">
+        <p>La date est : {{ myDate | date:'yyyy-MM-dd' }}</p>
+    <div *ngFor="let category of categories " class="col-md-4" style="margin-bottom: 20px;">  
+    <img [src]="category.image" [alt]="category.title" class="img-fluid h-50 w-75">
+    <h3>{{category.title | lowercase}}</h3>
+    <button [hidden]="!category.available" class="btn btn-primary">Voir produits</button>
+      <span *ngIf="!category.available">Catégorie non disponible </span>  
+      <a [routerLink]="['/products']" [queryParams]="{id:category.id}"><button class="btn btn-primary" *ngIf="category.available">Voir produits2</button></a>
+      <a [routerLink]="['category',category.id]">Voir détails</a>
+      
+    </div>
+    </div> 
+</div>
